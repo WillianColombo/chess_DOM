@@ -1,18 +1,18 @@
-class Piece{
-    constructor(id, color, position){
+export class Piece {
+    constructor(id, color, position) {
         this.id = id
         this.color = color
         this.status = true
         this.position = position
     }
 
-    disabled(){
+    disabled() {
         this.status = false
     }
-    enabled(){
+    enabled() {
         this.status = true
     }
-    move(newPosition){
+    move(newPosition) {
         const oldPosition = this.position
         this.position = newPosition
         oldPosition.removePiece()
@@ -20,40 +20,28 @@ class Piece{
     }
 }
 
-class Rook extends Piece{
-    constructor(){
+
+
+class Queen extends Piece {
+    constructor() {
         super()
     }
 }
 
-class Queen extends Piece{
-    constructor(){
+class King extends Piece {
+    constructor() {
         super()
     }
 }
 
-class King extends Piece{
-    constructor(){
+class Knight extends Piece {
+    constructor() {
         super()
     }
 }
 
-class Knight extends Piece{
-    constructor(){
+class Bishop extends Piece {
+    constructor() {
         super()
     }
 }
-
-class Pawn extends Piece{
-    constructor(){
-        super()
-    }
-}
-
-class Bishop extends Piece{
-    constructor(){
-        super()
-    }
-}
-
-module.exports = Rook, Queen, King, Knight, Pawn, Bishop
