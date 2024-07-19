@@ -1,0 +1,13 @@
+#game-div{
+    display: flex;
+    justify-content: center;
+}
+
+#board{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+
+    height: 90vh;
+    width: 90vh;
+}

@@ -20,28 +20,3 @@ export class Piece {
     }
 }
 
-
-
-class Queen extends Piece {
-    constructor() {
-        super()
-    }
-}
-
-class King extends Piece {
-    constructor() {
-        super()
-    }
-}
-
-class Knight extends Piece {
-    constructor() {
-        super()
-    }
-}
-
-class Bishop extends Piece {
-    constructor() {
-        super()
-    }
-}

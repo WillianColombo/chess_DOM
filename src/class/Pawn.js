@@ -9,7 +9,7 @@ export class Pawn extends Piece {
 
     //Verifica se o peão chegou do lado oposto do tabuleiro, possibilitando a promoção do Peão
     checkPromotion() {
-        return this.position.positionY === 8 || this.position.positionY === 1 ? true : false
+        return positionY === 8 || positionY === 1 ? true : false
     }
 
     //Após dar o primeiro movimento, se torna false, impossibilitando andar mais de uma posição
@@ -17,60 +17,63 @@ export class Pawn extends Piece {
         this.firstMovement = false
     }
 
-    //Recebe todas as posições possíveis, e separa as inválidas (campos com coordenadas menor que 1 e maior que 8)
-    #removeInvalidPositions(absolutMovements) {
-        absolutMovements.forEach(position => {
-            if (position.positionX < 1 || position.positionX > 8 || position.positionY < 1 || position.positionY > 8) {
-                const i = absolutMovements.indexOf(position)
-                absolutMovements.splice(i, 1)
-            }
-        })
-        return absolutMovements
-    }
-
     //Retorna todas as posições possíveis do primeiro movimento de um peão
     #absolutFirstMovements() {
+        let positionX = this.position.positionX
+        let positionY = this.position.positionY
+        let absolutMovements = []
+
         if (this.color === 'black') {
-            const absolutMovements = [
+            absolutMovements = [
                 [
-                    { positionX: this.position.positionX, positionY: this.position.positionY + 1, diagonal: false },
-                    { positionX: this.position.positionX, positionY: this.position.positionY + 2, diagonal: false },
+                    { positionX: positionX, positionY: positionY + 1, diagonal: false },
+                    { positionX: positionX, positionY: positionY + 2, diagonal: false },
                 ],
-                { positionX: this.position.positionX - 1, positionY: this.position.positionY + 1, diagonal: true },
-                { positionX: this.position.positionX + 1, positionY: this.position.positionY + 1, diagonal: true },
+                { positionX: positionX - 1, positionY: positionY + 1, diagonal: true },
+                { positionX: positionX + 1, positionY: positionY + 1, diagonal: true },
             ]
-            return absolutMovements
         } else {
-            const absolutMovements = [
+            absolutMovements = [
                 [
-                    { positionX: this.position.positionX, positionY: this.position.positionY - 1, diagonal: false },
-                    { positionX: this.position.positionX, positionY: this.position.positionY - 2, diagonal: false },
+                    { positionX: positionX, positionY: positionY - 1, diagonal: false },
+                    { positionX: positionX, positionY: positionY - 2, diagonal: false },
                 ],
-                { positionX: this.position.positionX - 1, positionY: this.position.positionY - 1, diagonal: true },
-                { positionX: this.position.positionX + 1, positionY: this.position.positionY - 1, diagonal: true },
+                { positionX: positionX - 1, positionY: positionY - 1, diagonal: true },
+                { positionX: positionX + 1, positionY: positionY - 1, diagonal: true },
             ]
-            return this.#removeInvalidPositions(absolutMovements)
         }
+        return absolutMovements.filter(element => 
+            element.positionX >= 1 && 
+            element.positionX <= 8 && 
+            element.positionY >= 1 && 
+            element.positionY <= 8)
     }
 
     //Retorna todas as posições possíveis do movimento de um peão (não primeiro)
     #absolutMovements() {
+        let positionX = this.position.positionX
+        let positionY = this.position.positionY
         let absolutMovements = []
+
         if (this.color === 'black') {
             absolutMovements = [
-                { positionX: this.position.positionX, positionY: this.position.positionY + 1, diagonal: false },
-                { positionX: this.position.positionX - 1, positionY: this.position.positionY + 1, diagonal: true },
-                { positionX: this.position.positionX + 1, positionY: this.position.positionY + 1, diagonal: true },
+                { positionX: positionX, positionY: positionY + 1, diagonal: false },
+                { positionX: positionX - 1, positionY: positionY + 1, diagonal: true },
+                { positionX: positionX + 1, positionY: positionY + 1, diagonal: true },
             ]
         } else {
             absolutMovements = [
-                { positionX: this.position.positionX, positionY: this.position.positionY - 1, diagonal: false },
-                { positionX: this.position.positionX - 1, positionY: this.position.positionY - 1, diagonal: true },
-                { positionX: this.position.positionX + 1, positionY: this.position.positionY - 1, diagonal: true },
+                { positionX: positionX, positionY: positionY - 1, diagonal: false },
+                { positionX: positionX - 1, positionY: positionY - 1, diagonal: true },
+                { positionX: positionX + 1, positionY: positionY - 1, diagonal: true },
             ]
         }
 
-        return this.#removeInvalidPositions(absolutMovements)
+        return absolutMovements.filter(element => 
+            element.positionX >= 1 && 
+            element.positionX <= 8 && 
+            element.positionY >= 1 && 
+            element.positionY <= 8)
     }
 
     //Retorna os movimentos válidos do peão
