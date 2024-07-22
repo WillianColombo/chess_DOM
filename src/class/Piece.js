@@ -9,14 +9,5 @@ export class Piece {
     disabled() {
         this.status = false
     }
-    enabled() {
-        this.status = true
-    }
-    move(newPosition) {
-        const oldPosition = this.position
-        this.position = newPosition
-        oldPosition.removePiece()
-        newPosition.addPiece(this)
-    }
 }
 

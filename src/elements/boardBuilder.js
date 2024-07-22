@@ -5,11 +5,9 @@ export function boardBuilder(){
     const boardDiv = document.getElementById('board')
     
     board.forEach(position => {
-        const square = document.createElement('button')
+        const square = document.createElement('div')
         square.id = `${position.positionX}-${position.positionY}`
         square.className = 'square'
-        square.disabled = true
-        square.onclick = () => showMovements()
         
         boardDiv.appendChild(square)
     })

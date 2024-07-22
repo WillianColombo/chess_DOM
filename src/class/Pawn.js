@@ -42,11 +42,14 @@ export class Pawn extends Piece {
                 { positionX: positionX + 1, positionY: positionY - 1, diagonal: true },
             ]
         }
-        return absolutMovements.filter(element => 
-            element.positionX >= 1 && 
-            element.positionX <= 8 && 
-            element.positionY >= 1 && 
-            element.positionY <= 8)
+
+        return absolutMovements.filter(element =>
+            element.positionX >= 1 &&
+            element.positionX <= 8 &&
+            element.positionY >= 1 &&
+            element.positionY <= 8 ||
+            Array.isArray(element)
+        )
     }
 
     //Retorna todas as posições possíveis do movimento de um peão (não primeiro)
@@ -69,16 +72,19 @@ export class Pawn extends Piece {
             ]
         }
 
-        return absolutMovements.filter(element => 
-            element.positionX >= 1 && 
-            element.positionX <= 8 && 
-            element.positionY >= 1 && 
-            element.positionY <= 8)
+        return absolutMovements.filter(element =>
+            element.positionX >= 1 &&
+            element.positionX <= 8 &&
+            element.positionY >= 1 &&
+            element.positionY <= 8 ||
+            Array.isArray(element)
+        )
     }
 
     //Retorna os movimentos válidos do peão
     getMovements() {
         const absolutMovements = this.firstMovement ? this.#absolutFirstMovements() : this.#absolutMovements()
+
         let movements = []
         absolutMovements.forEach(position => {
             if (Array.isArray(position)) {

@@ -11,3 +11,19 @@
     height: 90vh;
     width: 90vh;
 }
+
+.square{
+    border: solid 0.1vh black;
+}
+
+.piece{
+    width: 100%;
+    height: 100%;
+}
+
+.square-movement{
+    border: solid 0.1vh black;
+    background-color: green;
+    width: 100%;
+    height: 100%;
+}
