@@ -9,7 +9,7 @@ export class Pawn extends Piece {
 
     //Verifica se o peão chegou do lado oposto do tabuleiro, possibilitando a promoção do Peão
     checkPromotion() {
-        return positionY === 8 || positionY === 1 ? true : false
+        return this.position.positionY === 8 || this.position.positionY === 1 ? true : false
     }
 
     //Após dar o primeiro movimento, se torna false, impossibilitando andar mais de uma posição

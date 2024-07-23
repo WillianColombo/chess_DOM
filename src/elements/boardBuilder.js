@@ -1,4 +1,3 @@
-import { showMovements } from "../functions/showMovements.js"
 import { board } from "../methods/setBoard.js"
 
 export function boardBuilder(){

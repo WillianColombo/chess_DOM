@@ -47,7 +47,7 @@ export function setPieces() {
     const blackRook2 = new Rook(`black-rook-2`, 'black', positionBlackRook2)
 
     positionWhiteRook1.occupation = whiteRook1
-    positionWhiteRook1.occupation = whiteRook2
+    positionWhiteRook2.occupation = whiteRook2
     positionBlackRook1.occupation = blackRook1
     positionBlackRook2.occupation = blackRook2
 

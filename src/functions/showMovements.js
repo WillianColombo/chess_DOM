@@ -1,11 +1,9 @@
 import { getChildren } from "../methods/getChildren.js"
-import { board } from "../methods/setBoard.js"
-import { capturePiece } from "./capturePiece.js"
 import { movePiece } from "./movePiece.js"
+import { resetActions } from "./resetActions.js"
 
 export function showMovements(piece) {
-    removeShowMovements()
-
+    resetActions()
     // Adiciona os movimentos da peça
     const movements = piece.getMovements()
     movements.forEach(movement => {
@@ -19,21 +17,8 @@ export function showMovements(piece) {
             square.appendChild(button)
         } else {
             const pieceElement = getChildren(document.getElementById(`${movement.positionX}-${movement.positionY}`))
-            pieceElement.onclick = () => capturePiece(movement)
-            pieceElement.style.backgroundColor = 'red'
-        }
-    })
-}
-
-export function removeShowMovements() {
-    //Remove os movimentos visuais
-    board.forEach(positionBoard => {
-        if (!positionBoard.occupation) {
-            const buttonSquare = document.getElementById(`btn-${positionBoard.positionX}-${positionBoard.positionY}`)
-            if (buttonSquare) {
-                buttonSquare.remove()
-            }
-
+            pieceElement.className = 'piece-capture'
+            pieceElement.onclick = () => movePiece(piece, movement, document.getElementById(`${movement.positionX}-${movement.positionY}`))
         }
     })
 }

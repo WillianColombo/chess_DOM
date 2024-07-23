@@ -5,8 +5,9 @@ export function capturePiece(positionBoard){
     const capturedPieceElement = getChildren(
         document.getElementById(`${positionBoard.positionX}-${positionBoard.positionY}`)
     )
-
     const capturedPiece = getPiece(`${positionBoard.positionX}-${positionBoard.positionY}`)
-    capturedPiece.disabled()
+
     capturedPieceElement.remove()
+    capturedPiece.disabled()
+    capturePiece.position = null
 }
